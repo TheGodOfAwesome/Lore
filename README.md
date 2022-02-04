@@ -1,34 +1,184 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+<div id="top"></div>
 
-## Getting Started
+<!-- TABLE OF CONTENTS -->
+<details>
+  <summary>Table of Contents</summary>
+  <ol>
+    <li>
+        <a href="#about-the-project">About The Project</a>
+        <ul>
+            <li><a href="#built-with">Built With</a></li>
+        </ul>
+    </li>
+    <li>
+        <a href="#project-setup">Project Setup</a>
+        <ul>
+            <li><a href="#prerequisites">Prerequisites</a></li>
+        </ul>
+    </li>
+    <li>
+        <a href="#project-dependencies">Project Dependencies</a>
+        <ul>
+            <li><a href="#next-js">Next.js</a></li>
+        </ul>
+        <ul>
+            <li><a href="#mdbootstrap">MDBootstrap</a></li>
+        </ul>
+        <ul>
+            <li><a href="#recoil">Recoil</a></li>
+        </ul>
+        <ul>
+            <li><a href="#wallet-connect">Wallet Connect</a></li>
+        </ul>
+        <ul>
+            <li><a href="#cypress">Cypress</a></li>
+        </ul>
+        <ul>
+            <li><a href="#storybook">Storybook</a></li>
+        </ul>
+    </li>
+    <li>
+        <a href="#deploy">Deploy</a>
+        <ul>
+            <li><a href="#deploy-to-kubernetes-cluster">Deploy to Kubernetes Cluster</a></li>
+        </ul>
+        <ul>
+            <li><a href="#deploy-with-vercel">Deploy with Vercel</a></li>
+        </ul>
+    </li>
+    <li>
+        <a href="#notes">Notes</a>
+    </li>
+  </ol>
+</details>
 
-First, run the development server:
+# About The Project
+
+Use the `README.md` to get started.
+
+<p align="right">(<a href="#top">back to top</a>)</p>
+
+## Built With
+         
+These are all the major project dependencies used in the project.
+
+* [Next.js](https://nextjs.org/) ([React.js](https://reactjs.org/))
+* [MDBootstrap](https://mdbootstrap.com/)
+* [Recoil](https://recoiljs.org/)
+* [Moralis](https://moralis.io/)
+* [Wallet Connect](https://walletconnect.com/)
+* [Cypress](https://www.cypress.io/)
+* [Storybook](https://storybook.js.org/)
+
+<p align="right">(<a href="#top">back to top</a>)</p>
+
+# Project setup 
+
+## Prerequisites
+
+To setup the project.
+* [npm](https://www.npmjs.com/)  
+or
+* [yarn](https://www.npmjs.com/package/yarn)
+* [docker](https://www.docker.com/)
+* [kubernetes](https://kubernetes.io/)
+
+## Next.js
 
 ```bash
-npm run dev
+npx create-next-app lore
 # or
-yarn dev
+yarn create next-app lore
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+<p align="right">(<a href="#top">back to top</a>)</p>
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+# Project Dependencies
+## MDBootstrap  
+```bash
+npm install --save mdbreact @zeit/next-css next-fonts next-images next-compose-plugins
+```  
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+### Add to next.config.js  
+```bash
+const withCSS = require('@zeit/next-css');
+const withFonts = require('next-fonts');
+const withImages = require('next-images');
+const withPlugins = require("next-compose-plugins");
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+module.exports = withPlugins([withCSS, withFonts, withImages]);
+```
 
-## Learn More
+### Imports in index.js  
+```bash
+import "@fortawesome/fontawesome-free/css/all.min.css";
+import 'bootstrap-css-only/css/bootstrap.min.css';
+import 'mdbreact/dist/css/mdb.css';
+```
 
-To learn more about Next.js, take a look at the following resources:
+## Recoil 
+```bash
+npm i --save recoil 
+# or 
+yarn add recoil
+``` 
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Moralis  
+```bash
+npm install moralis react-moralis
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+## Wallet Connect
+```bash
+npm i @walletconnect/web3-provider
+```
 
-## Deploy on Vercel
+### Fix for Ethereum JS after Wallet Connect install
+```bash
+# change
+"resolved": "git+ssh://git@github.com/ethereumjs/ethereumjs-abi.git#ee3994657fa7a427238e6ba92a84d0b529bbcde0"
+# to 
+"resolved": "https://registry.npmjs.org/ethereumjs-abi/-/ethereumjs-abi-0.6.8.tgz"
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Cypress
+```bash
+npm i cypress -D  
+# or 
+yarn add cypress -D
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+## Storybook  
+```bash
+npx sb init --builder webpack5 
+```
+Run Storybook
+```bash
+npm run storybook
+```
+
+<p align="right">(<a href="#top">back to top</a>)</p>
+
+# Deploy 
+## Deploy to Kubernetes Cluster
+
+https://www.docker.com/
+
+https://kubernetes.io/
+
+<p align="right">(<a href="#top">back to top</a>)</p>
+
+## Deploy with Vercel
+
+Deploy the example using [Vercel](https://vercel.com?utm_source=github&utm_medium=readme&utm_campaign=next-example):
+
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/git/external?repository-url=https://github.com/vercel/next.js/tree/canary/examples/with-typescript&project-name=with-typescript&repository-name=with-typescript)
+
+Deploy it to the cloud with [Vercel](https://vercel.com/new?utm_source=github&utm_medium=readme&utm_campaign=next-example) ([Documentation](https://nextjs.org/docs/deployment)).
+
+<p align="right">(<a href="#top">back to top</a>)</p>
+
+# Notes
+
+<p align="right">(<a href="#top">back to top</a>)</p>
+
