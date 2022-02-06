@@ -58,13 +58,14 @@ export default function Navbar() {
     const { switchNetwork, chainId, chain } = useChain();
     const [walletUser, setWalletUser] = useState(null);
     const [address, setAddress] = useState(null);
-    const [chains, setChain] = useState("avax");
+    const [chains, setChain] = useState("polygon test");
     const [price, setPrice] = useState(0);
     const [copied, setCopied] = useState(false);
     const [modal1, setModal1] = useState(false);
     const [modal2, setModal2] = useState(false);
     const [darkMode, setDarkMode] = useState(false);
     const [isOpen, setOpen] = useState(false);
+    const [isLive, setIsLive] = useState(false);
     let fontColor = "black";
     let bgColor = "white";
     let origin = '';
@@ -113,6 +114,7 @@ export default function Navbar() {
         console.log("Origin", origin);
         console.log("Hostname", hostname);
         console.log("Pathname", pathname);
+
         if (isAuthenticated && !isWeb3Enabled && !isWeb3EnableLoading) enableWeb3({ provider: connectorId });
         //call API every 5 seconds
         const interval = setInterval(() => {
@@ -122,8 +124,11 @@ export default function Navbar() {
                     tokenFetch();
                     nftFetch();
                 }
+                if (pathname == "/live") {
+                    setIsLive(true);
+                }
             }
-        , 60000);
+        , 6000);
         //clear the interval
         console.log(user, "USER");
         console.log(tokenData, "TOKEN DATA");
@@ -252,7 +257,7 @@ export default function Navbar() {
                                     <Link href="/live">
                                         <strong style={{ color: "#680de4" }}>
                                             { 
-                                                path == "/live"
+                                                isLive
                                                     ?   <div key="1">Live <b style={{ color: "red", fontSize:"1em"}}>&bull;</b></div>
                                                     :   <div key="2">Live</div>
                                             }
