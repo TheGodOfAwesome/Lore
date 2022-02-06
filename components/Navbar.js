@@ -71,6 +71,7 @@ export default function Navbar() {
     let origin = '';
     let pathname = '';
     let hostname = '';
+    let key = 0;
     
     const menuItems = [
         {
@@ -258,8 +259,8 @@ export default function Navbar() {
                                         <strong style={{ color: "#680de4" }}>
                                             { 
                                                 isLive
-                                                    ?   <div key="1">Live <b style={{ color: "red", fontSize:"1em"}}>&bull;</b></div>
-                                                    :   <div key="2">Live</div>
+                                                    ?   <div key={key}>Live <b style={{ color: "red", fontSize:"1em"}}>&bull;</b></div>
+                                                    :   <div key={key}>Live</div>
                                             }
                                         </strong>
                                     </Link>
@@ -282,7 +283,7 @@ export default function Navbar() {
                                         {
                                             isAuthenticated && user 
                                             ? <div><b style={{color:"#89df52"}}>&#9679;</b>{getShortAddr(user.get('ethAddress'))}</div>
-                                            : <b className="btn-dark rounded">connect wallet</b>
+                                            : <b className="">connect wallet</b>
                                         }
                                     </a>
                                     <span> 

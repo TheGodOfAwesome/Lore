@@ -197,11 +197,11 @@ const CreateEvent = () => {
         });
 
         xhr.onreadystatechange = (e) => {
-        if (xhr.readyState == 4 && xhr.status == 200) {
-            const response = JSON.parse(xhr.responseText);
-            setImageUrl(response.secure_url);
-            console.log(response.secure_url);
-        }
+            if (xhr.readyState == 4 && xhr.status == 200) {
+                const response = JSON.parse(xhr.responseText);
+                setImageUrl(response.secure_url);
+                console.log(response.secure_url);
+            }
         };
 
         fd.append(

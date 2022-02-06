@@ -13,6 +13,7 @@ export default function Live() {
                 <meta name="description" content="" />
                 <meta property="og:image" content="" />
                 <link rel="icon" href="/favicon.ico" />
+                <link rel="stylesheet" media="screen" href="https://fontlibrary.org//face/segment7" type="text/css"/>
             </Head>
 
             <VideoHeader/>
